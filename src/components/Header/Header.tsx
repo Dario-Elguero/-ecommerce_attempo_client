@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./header.sass";
+import "./Header.sass";
 import { BiChevronDown, BiMenu, BiSearch } from "react-icons/bi";
 import { Icons } from "../../assets/icons/icons";
 import Navbar from "./Navbar/Navbar";
