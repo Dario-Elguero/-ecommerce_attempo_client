@@ -18,10 +18,13 @@ export default function Header() {
     });
   }, []);
 
-  if (isOpenNavBar && !isDesktopScreen) {
-    document.querySelector("html").style.overflow = "hidden";
-  } else {
-    document.querySelector("html").style.overflow = "auto";
+  const html = document.querySelector("html");
+  if (html) {
+    if (isOpenNavBar && !isDesktopScreen) {
+      html.style.overflow = "hidden";
+    } else {
+      html.style.overflow = "auto";
+    }
   }
   const openSearchFunction = (): void => {
     setIsOpenSearch(!isOpenSearch);
