@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const URL: string = import.meta.env.VITE_API_URL;
+const TOKEN_IG: string = import.meta.env.VITE_API_TOKEN_IG;
+const URL_IG: string = import.meta.env.VITE_API_URL_IG;
 
 // @ts-ignore
 const { token } = JSON.parse(localStorage.getItem("auth")) || "";
@@ -19,7 +21,7 @@ export const postRequest = async (dataObject: {}, endpoint: string) => {
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
+      throw new Error(error.response?.data.message);
     } else {
       return "An unexpected error occurred";
     }
@@ -49,7 +51,7 @@ export const getRequest = async (endpoint: string) => {
   }
 };
 
-export const putRequest = async (endpoint: string, id: string, dataUpdate: {}) => {
+export const putRequest = async (endpoint: string, id: number | string, dataUpdate: {}) => {
   try {
     const { data } = await axios.put(URL + endpoint + id, dataUpdate, {
       headers: {
@@ -106,6 +108,27 @@ export const postRequestFile = async (endpoint: string, dataWithFile: {}) => {
     });
 
     return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("error message: ", error.message);
+
+      throw new Error(error.message);
+    } else {
+      console.log("unexpected error: ", error);
+      return "An unexpected error occurred";
+    }
+  }
+};
+
+export const getDataIG = async () => {
+  try {
+    const { data } = await axios.get(URL_IG + TOKEN_IG, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    });
+    return data.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.log("error message: ", error.message);

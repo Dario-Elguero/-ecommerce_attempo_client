@@ -1,7 +1,15 @@
+import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
+import InstaCarousel from "../../components/InstaCarousel/InstaCarousel";
+import Offer from "../../components/Offer/Offer";
+import News from "../../components/News/News";
+
 export default function Home() {
   return (
     <div className="">
-      <h1>Este es el home</h1>
+      <Offer />
+      <ProductCarousel />
+      <News />
+      <InstaCarousel />
     </div>
   );
 }
