@@ -51,7 +51,11 @@ export const getRequest = async (endpoint: string) => {
   }
 };
 
-export const putRequest = async (endpoint: string, id: number | string, dataUpdate: {}) => {
+export const putRequest = async (
+  endpoint: string,
+  id: number | string | undefined,
+  dataUpdate: {}
+) => {
   try {
     const { data } = await axios.put(URL + endpoint + id, dataUpdate, {
       headers: {
@@ -74,7 +78,7 @@ export const putRequest = async (endpoint: string, id: number | string, dataUpda
   }
 };
 
-export const deleteRequest = async (endpoint: string, id: string) => {
+export const deleteRequest = async (endpoint: string, id: number) => {
   try {
     const { data } = await axios.delete(URL + endpoint + id, {
       headers: {

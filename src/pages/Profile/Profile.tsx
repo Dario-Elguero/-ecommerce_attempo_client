@@ -55,20 +55,11 @@ export default function Profile() {
       <div className="profile_info">
         {editProfile && (
           <>
-            <EditProfile />
+            <EditProfile mode="profile" />
             <EditPassword />
           </>
         )}
-        {editDirection && (
-          <EditDirection
-            country={country}
-            state={state}
-            city={city}
-            street={street}
-            number={number}
-            zipCode={zipCode}
-          />
-        )}
+        {editDirection && <EditDirection />}
       </div>
     </div>
   );
