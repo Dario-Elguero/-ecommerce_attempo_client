@@ -59,7 +59,7 @@ export default function Profile() {
             <EditPassword />
           </>
         )}
-        {editDirection && <EditDirection />}
+        {editDirection && <EditDirection mode="profile"/>}
       </div>
     </div>
   );
